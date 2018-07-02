@@ -9,8 +9,8 @@ import net.rcarz.jiraclient.JiraClient;
 public class JiraUtil {
 
     public static JiraClient getJiraClient(){
-        BasicCredentials creds = new BasicCredentials("gaoxing", "happy891017");
-        JiraClient jira = new JiraClient("http://j.quyiyuan.com/", creds);
+        BasicCredentials creds = new BasicCredentials("jinsheng", "jinsheng");
+        JiraClient jira = new JiraClient("http://j.kyee.com.cn/", creds);
         return jira;
     }
 }
