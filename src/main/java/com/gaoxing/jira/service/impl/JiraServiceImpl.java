@@ -37,9 +37,9 @@ public class JiraServiceImpl implements JiraService {
     private String testProjects;
 
     public void getStoryPointData(String developer, String startTime, String endTime, DeveloperDto developerDto) {
-        String searchSql = "project in (" + projects + ") AND status = Closed AND resolution in (完成,阶段性完成)" +
-                " AND resolved >=" + startTime +
-                " AND resolved <=" + endTime +
+        String searchSql = "project in (" + projects + ") AND status = Closed " +
+                " AND updatedDate >=" + startTime +
+                " AND updatedDate <=" + endTime +
                 " AND \"Story Points\" > 0" +
                 " AND 开发人员 in (" + developer + ")";
         try {
@@ -113,8 +113,8 @@ public class JiraServiceImpl implements JiraService {
 
     public void getReturnData(String developer, String startTime, String endTime, DeveloperDto developerDto) {
         String searchSql = "project in (" + projects + ")" +
-                " AND resolved >=" + startTime +
-                " AND resolved <=" + endTime +
+                " AND updatedDate >=" + startTime +
+                " AND updatedDate <=" + endTime +
                 " AND 开发人员 in (" + developer + ")" +
                 " AND 退回次数 >= 1";
         try {
@@ -158,8 +158,8 @@ public class JiraServiceImpl implements JiraService {
 
     public Map<String, List<String>> getTesterReturnData(String startTime, String endTime) {
         String searchSql = "project in (" + projects + ")" +
-                " AND resolved >=" + startTime +
-                " AND resolved <=" + endTime +
+                " AND updatedDate >=" + startTime +
+                " AND updatedDate <=" + endTime +
                 " AND 退回次数 >= 1";
         Map<String, List<String>> results = new HashMap<>();
         Issue.SearchResult returnIssues = new Issue.SearchResult();
@@ -267,8 +267,8 @@ public class JiraServiceImpl implements JiraService {
             testTimeData.add(testTimeDto);
         }
         String searchSql = "project in (" + projects + ") AND status = Closed AND resolution = 完成" +
-                " AND resolved >=" + startTime +
-                " AND resolved <=" + endTime;
+                " AND updatedDate >=" + startTime +
+                " AND updatedDate <=" + endTime;
 
         Issue.SearchResult testIssues = executeSearchSql(searchSql,FieldType.REPORTER);
         testIssues.issues.forEach(issue -> {
@@ -301,8 +301,8 @@ public class JiraServiceImpl implements JiraService {
 
     public Map<String,List<String>> getTestCaseExecuteData(String startTime,String endTime) {
         String searchSql = "project in (" + projects + ") AND status = Closed AND resolution = 完成" +
-                " AND resolved >=" + startTime +
-                " AND resolved <=" + endTime;
+                " AND updatedDate >=" + startTime +
+                " AND updatedDate <=" + endTime;
         Issue.SearchResult testCaseExecute = executeSearchSql(searchSql, FieldType.ISSUE_LINKS);
 
         Map<String,List<String>> issueMap= new HashMap<>();

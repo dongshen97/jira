@@ -18,9 +18,9 @@ public class TestController {
     @RequestMapping(value = "/v1/test", method = RequestMethod.GET)
     public Callable<String> test() {
         return () -> {
-            BasicCredentials creds = new BasicCredentials("gaoxing", "happy891017");
-            JiraClient jira = new JiraClient("http://j.quyiyuan.com/", creds);
-            Issue issue = jira.getIssue("HMS-123",null,"changelog");
+            BasicCredentials creds = new BasicCredentials("jinsheng", "jinsheng");
+            JiraClient jira = new JiraClient("http://j.kyee.com.cn/", creds);
+            Issue issue = jira.getIssue("IOTBEDSIDE-123",null,"changelog");
             return "test";
         };
     }
