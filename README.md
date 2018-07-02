@@ -12,7 +12,8 @@
 
 
 #接口访问示例
-http://localhost:8989/ms-jira/v1/developer?startTime=2017-06-21&endTime=2017-07-20
+type =1 : android
+http://localhost:8989/ms-jira/v1/developer?startTime=2018-04-01&endTime=2018-07-01&type=1
 
 ### 测试人员绩效数据统计
 - 编写测试用例数
